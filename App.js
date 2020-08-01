@@ -1,19 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import ConfettiCannon from 'react-native-confetti-cannon';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
+export default class App extends Component {
+  state={
+    startConfetti:false
+  }
+
+  renderResults=() =>{
+    this.setState({
+      startConfetti:!this.state.startConfetti //toggles the visibilty of the text
+    });
+  } 
+  render() {
+    return (
+      <View style={styles.container}>
       <StatusBar style="auto" />
       <TouchableOpacity
           style={styles.dingButton}
-          onPress={() => alert('You tapped the button!')}
+          onPress={this.renderResults}
           underlayColor='#fff'>
           <Text style={styles.dingText}>Ding</Text>
       </TouchableOpacity>
-    </View>
-  );
+      {this.state.startConfetti?<ConfettiCannon count={200} origin={{x: -10, y: 0}} />:null}
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
