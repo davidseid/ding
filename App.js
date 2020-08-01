@@ -54,8 +54,10 @@ export default class App extends Component {
           <Text style={styles.dingText}>Ding</Text>
       </TouchableOpacity>
       <ConfettiCannon 
-        count={50} 
-        origin={{x: -20, y: 0}} 
+        count={70} 
+        origin={{x: -10, y: 0}}
+        explosionSpeed={400}
+        fallSpeed={3000}
         autoStart={false} 
         fadeOut={true} 
         ref={ref => (this.explosion = ref)}
