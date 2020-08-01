@@ -4,11 +4,16 @@
     "slug": "Ding",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/ding_bell.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/ding_bell.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "bundleIdentifier": "com.davidseid.ding",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,11 +21,8 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/ding_bell.png"
     }
   }
 }
