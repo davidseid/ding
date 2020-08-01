@@ -52,7 +52,7 @@ export default class App extends Component {
           style={styles.dingButton}
           onPress={this.renderResults}
           underlayColor='#fff'>
-          <Text style={styles.dingText}>Ding</Text>
+          <Text style={styles.dingText}>Ding!</Text>
       </TouchableOpacity>
       <ConfettiCannon 
         count={70} 
