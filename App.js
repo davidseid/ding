@@ -30,13 +30,14 @@ export default class App extends Component {
 
   renderResults= async () =>{
 
-    this.explosion && this.explosion.start();
     try {
       await soundObject.replayAsync();
       // Your sound is playing!
     } catch (error) {
       // An error occurred!
     }
+
+    this.explosion && this.explosion.start();
 
     // this.setState({
     //   exploded:!this.state.exploded //toggles the visibilty of the text
