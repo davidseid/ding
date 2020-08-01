@@ -2,16 +2,46 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import ConfettiCannon from 'react-native-confetti-cannon';
+import { Audio } from 'expo-av';
+
+const soundObject = new Audio.Sound();
+
 
 export default class App extends Component {
-  state={
-    startConfetti:false
+  constructor(props) {
+    super(props);
+    this.explosion;
+
+    this.loadSounds();
   }
 
-  renderResults=() =>{
-    this.setState({
-      startConfetti:!this.state.startConfetti //toggles the visibilty of the text
-    });
+  loadSounds = async () => {
+    try {
+      await soundObject.loadAsync(require('./assets/sounds/ding-sound-effect_2.mp3'));
+    } catch (error) {
+      // An error occurred!
+    }
+  }
+
+  // state={
+  //   exploded:false
+  // }
+
+
+  renderResults= async () =>{
+
+    this.explosion && this.explosion.start();
+    try {
+      await soundObject.replayAsync();
+      // Your sound is playing!
+    } catch (error) {
+      // An error occurred!
+    }
+
+    // this.setState({
+    //   exploded:!this.state.exploded //toggles the visibilty of the text
+    // });
+
   } 
   render() {
     return (
@@ -23,7 +53,13 @@ export default class App extends Component {
           underlayColor='#fff'>
           <Text style={styles.dingText}>Ding</Text>
       </TouchableOpacity>
-      {this.state.startConfetti?<ConfettiCannon count={200} origin={{x: -10, y: 0}} />:null}
+      <ConfettiCannon 
+        count={50} 
+        origin={{x: -20, y: 0}} 
+        autoStart={false} 
+        fadeOut={true} 
+        ref={ref => (this.explosion = ref)}
+      />
       </View>
     );
   }
